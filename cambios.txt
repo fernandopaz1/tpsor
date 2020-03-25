@@ -1,3 +1,0 @@
-cambios.txt
-README.md
-supermenu.sh
