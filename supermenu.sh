@@ -13,7 +13,7 @@
 #------------------------------------------------------
 # TODO: Completar con su path
 #------------------------------------------------------
-proyectoActual="path de mi proyecto gitlab"
+proyectoActual="/home/$USER/Descargas/tpsor/"
 
 #------------------------------------------------------
 # DISPLAY MENU
