@@ -14,6 +14,11 @@
 # TODO: Completar   con   su   path
 #------------------------------------------------------
 proyectoActual="/home/$USER/Descargas/tpsor/"
+cd proyectoActual;
+git pull upstream master;
+git diff origin/master > cambios.txt;
+
+
 #------------------------------------------------------
 # DISPLAY MENU
 #------------------------------------------------------
