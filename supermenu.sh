@@ -1,6 +1,6 @@
 #!/bin/bash
 #------------------------------------------------------
-# PALETA DE COLORES
+# PALETA DE COLORES 
 #------------------------------------------------------
 #setaf para color de letras/setab: color de fondo
 	red=`tput setaf 1`;
@@ -111,7 +111,7 @@ c_funcion () {
 
 f_funcion () {
 	imprimir_encabezado "\tOpción f.  Abrir en terminal";        
-	decidir "cd $proyectoActual; xterm &";
+	decidir "cd $proyectoActual; nano supermenu.sh";
 }
 
 g_funcion () {
