@@ -11,7 +11,7 @@
 	bold=`tput setaf bold`;
 
 #------------------------------------------------------
-# TODO: Completar con su path
+# TODO: Completar   con   su   path
 #------------------------------------------------------
 proyectoActual="/home/$USER/Descargas/tpsor/"
 
