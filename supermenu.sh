@@ -14,33 +14,6 @@
 # TODO: Completar   con   su   path
 #------------------------------------------------------
 proyectoActual="/home/$USER/Descargas/tpsor/"
-cd proyectoActual;
-git pull upstream master;
-git diff origin/master > cambios.txt;
-
-
-#------------------------------------------------------
-# DISPLAY MENU
-#------------------------------------------------------
-imprimir_menu () {
-       imprimir_encabezado "\t  S  U  P  E  R  -  M  E  N U ";
-	
-    echo -e "\t\t El proyecto actual es:";
-    echo -e "\t\t $proyectoActual";
-    
-    echo -e "\t\t";
-    echo -e "\t\t Opciones:";
-    echo "";
-    echo -e "\t\t\t a.  Ver estado del proyecto";
-    echo -e "\t\t\t b.  Guardar cambios";
-    echo -e "\t\t\t c.  Actualizar repo";
-    echo -e "\t\t\t f.  Abrir en terminal";        
-    echo -e "\t\t\t g.  Abrir en carpeta"; 
-    
-    echo -e "\t\t\t q.  Salir";
-    echo "";
-    echo -e "Escriba la opción y presione ENTER";
-}
 
 #------------------------------------------------------
 # FUNCTIONES AUXILIARES
@@ -82,6 +55,53 @@ decidir () {
     		esac
 	done
 }
+
+#------------------------------------------------------
+# Chequea si esta actualizada
+#------------------------------------------------------
+
+cd $proyectoActual;
+git pull upstream master;
+gitDiffOutput=$(git diff origin/master);  #guarda en la variable la salida
+longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
+echo ${#gitDiffOutput};
+
+if (($longDiff > 1))  
+    then
+	echo
+	echo "Su repositorio gitlab debe ser actualizado";
+	echo
+        decidir "git add . ;git commit; git push origin master"
+    else
+        echo "Su repositorio esta actualizado";
+fi
+
+
+
+
+#------------------------------------------------------
+# DISPLAY MENU
+#------------------------------------------------------
+imprimir_menu () {
+       imprimir_encabezado "\t  S  U  P  E  R  -  M  E  N U ";
+	
+    echo -e "\t\t El proyecto actual es:";
+    echo -e "\t\t $proyectoActual";
+    
+    echo -e "\t\t";
+    echo -e "\t\t Opciones:";
+    echo "";
+    echo -e "\t\t\t a.  Ver estado del proyecto";
+    echo -e "\t\t\t b.  Guardar cambios";
+    echo -e "\t\t\t c.  Actualizar repo";
+    echo -e "\t\t\t f.  Abrir en terminal";        
+    echo -e "\t\t\t g.  Abrir en carpeta"; 
+    
+    echo -e "\t\t\t q.  Salir";
+    echo "";
+    echo -e "Escriba la opción y presione ENTER";
+}
+
 
 #------------------------------------------------------
 # FUNCTIONES del MENU
