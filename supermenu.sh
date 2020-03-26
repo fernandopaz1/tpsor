@@ -71,7 +71,7 @@ if (($longDiff > 1))
 	echo
 	echo "Su repositorio gitlab debe ser actualizado";
 	echo
-        decidir "git add . ;git commit; git push origin master"
+        decidir "git add supermenu.sh ; git commit;  git push origin master"
     else
         echo "Su repositorio esta actualizado";
 fi
