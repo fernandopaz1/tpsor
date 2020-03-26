@@ -61,17 +61,17 @@ decidir () {
 #------------------------------------------------------
 
 cd $proyectoActual;
-git pull upstream master;
-gitDiffOutput=$(git diff origin/master);  #guarda en la variable la salida
+
+gitDiffOutput=$(git diff upstream/master);  #guarda en la variable la salida
 longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
 echo ${#gitDiffOutput};
 
 if (($longDiff > 1))  
     then
 	echo
-	echo "Su repositorio gitlab debe ser actualizado";
+	echo "Debe realizar un pull antes de trabajar";
 	echo
-        decidir "git add supermenu.sh ; git commit;  git push origin master"
+        decidir "git pull upstream master"
     else
         echo "Su repositorio esta actualizado";
 fi
