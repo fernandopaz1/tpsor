@@ -140,7 +140,7 @@ f_funcion () {
 
 g_funcion () {
 	imprimir_encabezado "\tOpción g.  Abrir en carpeta";        
-	decidir "gnome-open $proyectoActual &";
+	decidir "gio open $proyectoActual &";
 }
 
 #------------------------------------------------------
