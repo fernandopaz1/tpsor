@@ -61,8 +61,8 @@ decidir () {
 #------------------------------------------------------
 
 cd $proyectoActual;
-
-gitDiffOutput=$((git log HEAD..origin/master --oneline)2>&1);  #guarda en la variable la salida
+git fetch upstream master;
+gitDiffOutput=$((git log HEAD..upstream/master --oneline)2>&1);  #guarda en la variable la salida
 longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
 
 
