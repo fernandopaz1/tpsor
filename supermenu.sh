@@ -124,12 +124,12 @@ b_funcion () {
        	echo "Ingrese mensaje para el commit:";
        	read mensaje;
        	decidir "cd $proyectoActual; git commit -m \"$mensaje\"";
-       	decidir "cd $proyectoActual; git push";
+       	decidir "cd $proyectoActual; git push origin master";
 }
 
 c_funcion () {
       	imprimir_encabezado "\tOpción c.  Actualizar repo";
-      	decidir "cd $proyectoActual; git pull";   	 
+      	decidir "cd $proyectoActual; git pull upstream master";   	 
 }
 
 
