@@ -60,24 +60,24 @@ decidir () {
 # Chequea si esta actualizada
 #------------------------------------------------------
 
+necesitaPull(){
+
+	gitDiffOutput=$(git diff upstream/master);  #guarda en la variable la salida
+	longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
+
+
+	if (($longDiff > 1))  
+    		then
+		echo
+		echo "Debe realizar un pull antes de trabajar";
+		echo
+	else
+        	echo "Su proyecto  esta actualizado";
+	fi
+}
 cd $proyectoActual;
-git fetch upstream master;
-gitDiffOutput=$((git log HEAD..upstream/master --oneline)2>&1);  #guarda en la variable la salida
-longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
-
-
-if (($longDiff > 1))  
-    then
-	echo
-	echo "Debe realizar un pull antes de trabajar";
-	esperar;
-	echo
-     	    else
-        echo " ";
-fi
-
-
-
+necesitaPull;
+esperar;
 
 #------------------------------------------------------
 # DISPLAY MENU
@@ -114,8 +114,8 @@ a_funcion () {
 
         echo "---------------------------"        
 	echo "Incoming changes (need a pull)?"
-	decidir "cd $proyectoActual; git fetch origin"
-	decidir "cd $proyectoActual; git log HEAD..origin/master --oneline"
+	decidir "cd $proyectoActual; necesitaPull"
+
 }
 
 b_funcion () {
@@ -171,5 +171,4 @@ do
         *) malaEleccion;;
     esac
     esperar;
-
 done
