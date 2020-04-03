@@ -70,6 +70,7 @@ if (($longDiff > 1))
     then
 	echo
 	echo "Debe realizar un pull antes de trabajar";
+	esperar;
 	echo
        # decidir git pull upstream master"
     else
@@ -172,4 +173,3 @@ do
     esac
     esperar;
 done
- 
