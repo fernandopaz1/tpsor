@@ -71,7 +71,7 @@ if (($longDiff > 1))
 	echo
 	echo "Debe realizar un pull antes de trabajar";
 	echo
-        decidir "git pull upstream master"
+       # decidir git pull upstream master"
     else
         echo "Su repositorio esta actualizado";
 fi
