@@ -62,9 +62,9 @@ decidir () {
 
 cd $proyectoActual;
 
-gitDiffOutput=$(git diff upstream/master);  #guarda en la variable la salida
+gitDiffOutput=$(git log HEAD..origin/master --oneline);  #guarda en la variable la salida
 longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
-echo ${#gitDiffOutput};
+echo $longDiff;
 
 if (($longDiff > 1))  
     then
@@ -72,9 +72,8 @@ if (($longDiff > 1))
 	echo "Debe realizar un pull antes de trabajar";
 	esperar;
 	echo
-       # decidir git pull upstream master"
-    else
-        echo "Su repositorio esta actualizado";
+     	    else
+        echo " ";
 fi
 
 
