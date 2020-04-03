@@ -64,7 +64,7 @@ cd $proyectoActual;
 
 gitDiffOutput=$(git log HEAD..origin/master --oneline);  #guarda en la variable la salida
 longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
-echo $longDiff;
+
 
 if (($longDiff > 1))  
     then
