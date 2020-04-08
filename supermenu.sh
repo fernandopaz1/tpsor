@@ -69,7 +69,7 @@ necesitaPull(){
 	if (($longDiff > 1))  
     		then
 		echo
-		echo "Debe realizar un pull antes de trabajar";
+		echo "Debe realizar un pull antes de empezar a trabajar";
 		echo
 	else
         	echo "Su proyecto  esta actualizado";
@@ -94,8 +94,11 @@ imprimir_menu () {
     echo -e "\t\t\t a.  Ver estado del proyecto";
     echo -e "\t\t\t b.  Guardar cambios";
     echo -e "\t\t\t c.  Actualizar repo";
+    echo -e "\t\t\t d.  Correr ejercio 1: Proceso y fork";
+    echo -e "\t\t\t e.  Correr ejercio 2: Filósofos chinos";
     echo -e "\t\t\t f.  Abrir en terminal";        
     echo -e "\t\t\t g.  Abrir en carpeta"; 
+    echo -e "\t\t\t h.  Correr ejercio 2b: Sincronización"; 
     
     echo -e "\t\t\t q.  Salir";
     echo "";
@@ -132,6 +135,21 @@ c_funcion () {
       	decidir "cd $proyectoActual; git pull upstream master";   	 
 }
 
+d_funcion () {
+      	imprimir_encabezado "\tOpción d.  Correr ejercio 1: Proceso y fork";
+	echo "Correr version sin implementacion de fork:";
+	decidir "cd $proyectoActual; gcc do_nothingSinFork.c -o do_nothingSinFork.e; time ./do_nothingSinFork.e";
+	echo "Correr version implementando fork:";
+	decidir "cd $proyectoActual; gcc do_nothingFork.c -o do_nothingFork.e; time ./do_nothingFork.e";
+
+	 	 
+}
+
+e_funcion () {
+      	imprimir_encabezado "\tOpción e.  Correr ejercio 2: Filósofos chinos";
+	decidir "cd $proyectoActual; gcc filosofosChinos.c -o filosofosChinos.e -lpthread; ./filosofosChinos.e";   	 
+}
+
 
 f_funcion () {
 	imprimir_encabezado "\tOpción f.  Abrir en terminal";        
@@ -141,6 +159,11 @@ f_funcion () {
 g_funcion () {
 	imprimir_encabezado "\tOpción g.  Abrir en carpeta";        
 	decidir "gio open $proyectoActual &";
+}
+
+h_funcion () {
+	imprimir_encabezado "\tOpción h.  Correr ejercio 2b: Sincronización";        
+	decidir "cd $proyectoActual; gcc sincronizacion.c -o sincronizacion.e -lpthread; (./sincronizacion.e 10)>sincronizacion.txt";
 }
 
 #------------------------------------------------------
@@ -167,6 +190,7 @@ do
         e|E) e_funcion;;
         f|F) f_funcion;;
         g|G) g_funcion;;
+	h|H) h_funcion;;
         q|Q) break;;
         *) malaEleccion;;
     esac
