@@ -35,11 +35,6 @@ int main() {
 	printf("\n %s","Llamada a do_nothing");
 	do_nothing(2000000,msg2); //esperar 2 segundos, 1 millon de microsegundos en 1 segundo
 
-	printf("\n %s","Llamada a do_nothing");
-	do_nothing(2000000,msg2);
-
-	printf("\n %s \n","Llamada a do_nothing");
-	do_nothing(2000000,msg2); 
 	return 0;
 
 }

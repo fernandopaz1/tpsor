@@ -180,10 +180,17 @@ e_funcion () {
 
 f_funcion () {
       	imprimir_encabezado "\tOpción d.  Correr ejercio 1: Proceso y fork";
+	rm do_nothingSinFork.txt > /dev/null 2>&1;
+	rm do_nothingFork.txt > /dev/null 2>&1;
 	echo "Correr version sin implementacion de fork:";
-	decidir "cd $proyectoActual; gcc do_nothingSinFork.c -o do_nothingSinFork.e; time ./do_nothingSinFork.e";
+	decidir "cd $proyectoActual; gcc do_nothingSinFork.c -o do_nothingSinFork.e; (time ./do_nothingSinFork.e >> do_nothingSinFork.txt)";
+	echo "Desea ver de que forma se ejecutó:";
+	decidir "cd $proyectoActual; cat do_nothingSinFork.txt";
+
 	echo "Correr version implementando fork:";
-	decidir "cd $proyectoActual; gcc do_nothingFork.c -o do_nothingFork.e; time ./do_nothingFork.e";
+	decidir "cd $proyectoActual; gcc do_nothingFork.c -o do_nothingFork.e; (time ./do_nothingFork.e) >> do_nothingFork.txt";
+	echo "Desea ver de que forma se ejecutó:";
+	decidir "cd $proyectoActual; cat do_nothingFork.txt";
 
 	 	 
 }
@@ -196,7 +203,8 @@ g_funcion () {
 
 
 h_funcion () {
-	imprimir_encabezado "\tOpción h.  Correr ejercio 2b: Sincronización";        
+	imprimir_encabezado "\tOpción h.  Correr ejercio 2b: Sincronización";
+	script sincronizacion.txt; 
 	decidir "cd $proyectoActual; gcc sincronizacion.c -o sincronizacion.e -lpthread; ./sincronizacion.e";
 }
 

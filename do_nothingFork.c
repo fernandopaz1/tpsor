@@ -35,10 +35,6 @@ int main() {
 		do_nothing(2000000, msg1);
 		printf("\n %s","Padre llama do_nothing");
 
-		printf("\n %s","Padre llama do_nothing");
-		do_nothing(2000000, msg1);
-		printf("\n %s","Padre llama do_nothing");
-
 		pidC = wait(&status);
 	}
 	else{ 
@@ -50,10 +46,7 @@ int main() {
 
 		printf("\n %s","Hijo llama do_nothing");
 		do_nothing(2000000,msg2);
-		printf("\n %s","Hijo Termina do_nothing");
-
-		printf("\n %s","Hijo llama do_nothing");
-		do_nothing(2000000,msg2);
+		
 		printf("\n %s","Hijo Termina do_nothing");
  	 }
   return 0;
