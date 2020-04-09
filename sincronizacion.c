@@ -131,7 +131,7 @@ static void * tomarDecision(void *iteracion) {
 int main()    {
 	int *iteraciones = malloc(sizeof(*iteraciones));
 	int a;
-	printf("%s","Introdicir el número de iteraciones deseado:  ");
+	printf("%s","Introducir el número de iteraciones deseado:  ");
 	scanf("%d", &a);
 	
 	*iteraciones= a;
