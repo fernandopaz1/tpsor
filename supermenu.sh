@@ -61,8 +61,8 @@ decidir () {
 #------------------------------------------------------
 
 necesitaPull(){
-
-	gitDiffOutput=$(git diff master@{upstream});  #guarda en la variable la salida
+  git fetch upstream master > /dev/null 2>&1
+	gitDiffOutput=$(git log master..upstream/master --oneline);  #guarda en la variable la salida
 	longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
 
 
