@@ -134,7 +134,7 @@ int main(void)    {
 
 	int *platos = malloc(sizeof(*platos));
 	int a;
-	printf("%s","Introdicir la cantidad de platos permitidos para cada filosofo:  ");
+	printf("%s","Introducir la cantidad de platos permitidos para cada filosofo:  ");
 	scanf("%d", &a);
 
 	*platos=a;
