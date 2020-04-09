@@ -25,7 +25,7 @@ static void * pienso(void *iteracion) {
 
 		sem_wait(&P1234);
 		sem_wait(&P1);		
-		printf("\n %s \n","Pienso");
+		printf("\n\n%s \n","Pienso");
 		sem_post(&P1234);
 		sem_post(&P2);
 		sem_post(&P3);
@@ -44,7 +44,7 @@ static void * lavoPlatos(void *iteracion) {
 	//Estado Pensando
 		sem_wait(&P1234);
 		sem_wait(&P2);
-		printf("\n %s \n","Mientras lavo los platos");
+		printf("%s","Mientras lavo los platos, ");
 		sem_post(&terminaP1234);
 		sem_post(&P1234);
 		
@@ -59,7 +59,7 @@ static void * limpioPisos(void *iteracion) {
 	//Estado Pensando
 		sem_wait(&P1234);
 		sem_wait(&P3);
-		printf("\n %s \n","Mientras limpio los pisos");
+		printf("%s","Mientras limpio los pisos, ");
 		sem_post(&terminaP1234);
 		sem_post(&P1234);
 
@@ -74,7 +74,7 @@ static void * riegoPlantas(void *iteracion) {
 	//Estado Pensando
 		sem_wait(&P1234);
 		sem_wait(&P4);
-		printf("\n %s \n","Mientras riego las plantas");
+		printf("%s","Mientras riego las plantas, ");
 		sem_post(&terminaP1234);
 		sem_post(&P1234);
 
@@ -91,7 +91,7 @@ static void * existo(void *iteracion) {
 		sem_wait(&terminaP1234);
 		sem_wait(&terminaP1234);
 		sem_wait(&terminaP1234);
-		printf("\n %s \n","Existo!");
+		printf("\n%s\n","Existo!");
 		sem_post(&P6);
 		sem_post(&P7);
 		sem_post(&P5);
@@ -106,7 +106,7 @@ static void * hablar(void *iteracion) {
 	while (i<N) {
 	//Estado Pensando
 		sem_wait(&P6);
-		printf("\n %s \n","Hablar");
+		printf("%s","Hablar, ");
 		sem_post(&terminaP6);
 		i++;
 	}
@@ -119,7 +119,7 @@ static void * tomarDecision(void *iteracion) {
 	//Estado Pensando
 		sem_wait(&P7);
 		sem_wait(&terminaP6);
-		printf("\n %s \n","Tomar una decisión");
+		printf("%s","Tomar una decisión");
 		sem_post(&P1);
 
 		i++;
@@ -128,10 +128,11 @@ static void * tomarDecision(void *iteracion) {
 
 
 
-int main(int argc,char *argv[])    {
+int main()    {
 	int *iteraciones = malloc(sizeof(*iteraciones));
 	int a;
-	sscanf(argv[1], "%d", & a);
+	printf("%s","Introdicir el número de iteraciones deseado:  ");
+	scanf("%d", &a);
 	
 	*iteraciones= a;
 

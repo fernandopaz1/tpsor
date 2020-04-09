@@ -19,31 +19,29 @@ void do_nothing_random(char* mensaje){
 
 
 int main() {
-  char* msg1= "";
+	char* msg1= ""; 
   char* msg2= "";
-    printf("\n pid del proceso=  %d \n",getpid());	
-  
-    printf("\n %s","Llamada a do_nothing");
-    do_nothing(2000000, msg1);
- 
-    printf("\n %s","Llamada a do_nothing");
-	  do_nothing(2000000, msg1);
+	printf("\n pid del proceso=  %d \n",getpid());	
 
-     printf("\n %s","Llamada a do_nothing");
-	  do_nothing(2000000, msg1);
-	
-	 printf("\n %s","Llamada a do_nothing");
-	  do_nothing(2000000,msg2); //esperar 2 segundos, 1 millon de microsegundos en 1 segundo
- 
-  printf("\n %s","Llamada a do_nothing");
+	printf("\n %s","Llamada a do_nothing");
+	do_nothing(2000000, msg1);
+
+	printf("\n %s","Llamada a do_nothing");
+	do_nothing(2000000, msg1);
+
+	printf("\n %s","Llamada a do_nothing");
+	do_nothing(2000000, msg1);
+
+	printf("\n %s","Llamada a do_nothing");
+	do_nothing(2000000,msg2); //esperar 2 segundos, 1 millon de microsegundos en 1 segundo
+
+	printf("\n %s","Llamada a do_nothing");
 	do_nothing(2000000,msg2);
- 
-   printf("\n %s \n","Llamada a do_nothing");
-	do_nothing(2000000,msg2);
- 
- 	 
-  return 0;
-  	
+
+	printf("\n %s \n","Llamada a do_nothing");
+	do_nothing(2000000,msg2); 
+	return 0;
+
 }
 
 //para compilar: gcc do_nothing.c -o ejecutable

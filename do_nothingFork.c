@@ -19,44 +19,42 @@ void do_nothing_random(char* mensaje){
 
 
 int main() {
-  char* msg1= "";
-  char* msg2= "";
-  int pid= fork();
-  int pidC;
-  int status; 
-  if (pid!=0){
-    printf("\n pid del padre=  %d \n",getpid());	
-  
-    printf("\n %s","Padre llama do_nothing");
-    do_nothing(2000000, msg1);
-    printf("\n %s","Padre Termina do_nothing");
-    
-    printf("\n %s","Padre llama do_nothing");
-	  do_nothing(2000000, msg1);
-    printf("\n %s","Padre llama do_nothing");
+	char* msg1= "";
+	char* msg2= "";
+	int pid= fork();
+	int pidC;
+	int status; 
+	if (pid!=0){
+		printf("\n pid del padre=  %d \n",getpid());	
 
-    printf("\n %s","Padre llama do_nothing");
-	  do_nothing(2000000, msg1);
-    printf("\n %s","Padre llama do_nothing");
-	
-    pidC = wait(&status);
- 	 }
-  else
-	 { 
-	printf("\n pid del hijo=  %d \n",getpid());
+		printf("\n %s","Padre llama do_nothing");
+		do_nothing(2000000, msg1);
+		printf("\n %s","Padre Termina do_nothing");
 
-  printf("\n %s","Hijo llama do_nothing");
-  do_nothing(2000000,msg2); //esperar 2 segundos, 1 millon de microsegundos en 1 segundo
-  printf("\n %s","Hijo Termina do_nothing");
+		printf("\n %s","Padre llama do_nothing");
+		do_nothing(2000000, msg1);
+		printf("\n %s","Padre llama do_nothing");
 
-  printf("\n %s","Hijo llama do_nothing");
-	do_nothing(2000000,msg2);
-  printf("\n %s","Hijo Termina do_nothing");
+		printf("\n %s","Padre llama do_nothing");
+		do_nothing(2000000, msg1);
+		printf("\n %s","Padre llama do_nothing");
 
-  printf("\n %s","Hijo llama do_nothing");
-	do_nothing(2000000,msg2);
-  printf("\n %s","Hijo Termina do_nothing");
+		pidC = wait(&status);
+	}
+	else{ 
+		printf("\n pid del hijo=  %d \n",getpid());
 
+		printf("\n %s","Hijo llama do_nothing");
+		do_nothing(2000000,msg2); //esperar 2 segundos, 1 millon de microsegundos en 1 segundo
+		printf("\n %s","Hijo Termina do_nothing");
+
+		printf("\n %s","Hijo llama do_nothing");
+		do_nothing(2000000,msg2);
+		printf("\n %s","Hijo Termina do_nothing");
+
+		printf("\n %s","Hijo llama do_nothing");
+		do_nothing(2000000,msg2);
+		printf("\n %s","Hijo Termina do_nothing");
  	 }
   return 0;
   	

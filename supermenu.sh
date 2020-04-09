@@ -94,10 +94,10 @@ imprimir_menu () {
     echo -e "\t\t\t a.  Ver estado del proyecto";
     echo -e "\t\t\t b.  Guardar cambios";
     echo -e "\t\t\t c.  Actualizar repo";
-    echo -e "\t\t\t d.  Correr ejercio 1: Proceso y fork";
-    echo -e "\t\t\t e.  Correr ejercio 2: Filósofos chinos";
-    echo -e "\t\t\t f.  Abrir en terminal";        
-    echo -e "\t\t\t g.  Abrir en carpeta"; 
+    echo -e "\t\t\t d.  Abrir en terminal";        
+    echo -e "\t\t\t e.  Abrir en carpeta"; 
+    echo -e "\t\t\t f.  Correr ejercio 1: Proceso y fork";
+    echo -e "\t\t\t g.  Correr ejercio 2: Filósofos chinos";
     echo -e "\t\t\t h.  Correr ejercio 2b: Sincronización"; 
     
     echo -e "\t\t\t q.  Salir";
@@ -136,6 +136,42 @@ c_funcion () {
 }
 
 d_funcion () {
+	imprimir_encabezado "\tOpción f.  Abrir en terminal"; 
+
+	echo -e "\t\t";
+	echo -e "\t\t Opciones:";
+	echo "";
+	echo -e "\t\t\t a.  supermenu.sh";
+	echo -e "\t\t\t b.  do_nothingSinFork.c";
+	echo -e "\t\t\t c.  do_nothingFork.c";
+	echo -e "\t\t\t d.  filosofosChinos.c";
+	echo -e "\t\t\t e.  filosofosChinosDeadlock.c";
+	echo -e "\t\t\t f.  sincronizacion.c";
+	echo "";
+	echo -e "Escriba la opción y presione ENTER";
+
+
+	read eleccion;
+ 
+	case $eleccion in
+		a|A) archivo="supermenu.sh";;
+		b|B) archivo="do_nothingSinFork.c";;
+		c|C) archivo="do_nothingFork.c";;
+		d|D) archivo="filosofosChinos.c";;
+		e|E) archivo="filosofosChinosDeadlock.c";;
+		f|F) archivo="sincronizacion.c";;
+		*) malaEleccion;;
+	esac      
+	decidir "cd $proyectoActual; nano "$archivo;
+}
+
+e_funcion () {
+	imprimir_encabezado "\tOpción g.  Abrir en carpeta";        
+	decidir "gio open $proyectoActual &";
+}
+
+
+f_funcion () {
       	imprimir_encabezado "\tOpción d.  Correr ejercio 1: Proceso y fork";
 	echo "Correr version sin implementacion de fork:";
 	decidir "cd $proyectoActual; gcc do_nothingSinFork.c -o do_nothingSinFork.e; time ./do_nothingSinFork.e";
@@ -145,25 +181,16 @@ d_funcion () {
 	 	 
 }
 
-e_funcion () {
+g_funcion () {
       	imprimir_encabezado "\tOpción e.  Correr ejercio 2: Filósofos chinos";
 	decidir "cd $proyectoActual; gcc filosofosChinos.c -o filosofosChinos.e -lpthread; ./filosofosChinos.e";   	 
 }
 
 
-f_funcion () {
-	imprimir_encabezado "\tOpción f.  Abrir en terminal";        
-	decidir "cd $proyectoActual; nano supermenu.sh";
-}
-
-g_funcion () {
-	imprimir_encabezado "\tOpción g.  Abrir en carpeta";        
-	decidir "gio open $proyectoActual &";
-}
 
 h_funcion () {
 	imprimir_encabezado "\tOpción h.  Correr ejercio 2b: Sincronización";        
-	decidir "cd $proyectoActual; gcc sincronizacion.c -o sincronizacion.e -lpthread; (./sincronizacion.e 10)>sincronizacion.txt";
+	decidir "cd $proyectoActual; gcc sincronizacion.c -o sincronizacion.e -lpthread; ./sincronizacion.e";
 }
 
 #------------------------------------------------------
