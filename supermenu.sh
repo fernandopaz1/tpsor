@@ -62,7 +62,7 @@ decidir () {
 
 necesitaPull(){
 
-	gitDiffOutput=$(git diff upstream/master);  #guarda en la variable la salida
+	gitDiffOutput=$(git diff @{upstream});  #guarda en la variable la salida
 	longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
 
 
