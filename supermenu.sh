@@ -61,7 +61,7 @@ decidir () {
 #------------------------------------------------------
 
 necesitaPull(){
-  git fetch upstream master > /dev/null 2>&1
+  git fetch upstream master > /dev/null 2>&1;
 	gitDiffOutput=$(git log master..upstream/master --oneline);  #guarda en la variable la salida
 	longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
 
@@ -166,8 +166,15 @@ d_funcion () {
 }
 
 e_funcion () {
-	imprimir_encabezado "\tOpción g.  Abrir en carpeta";        
-	decidir "gio open $proyectoActual &";
+	imprimir_encabezado "\tOpción g.  Abrir en carpeta";
+	echo "---------------------------";
+	echo "Listar archivos .c de la carpeta";
+	decidir "cd $proyectoActual; ls -a | grep ".c$"";
+	echo " ";
+	echo "---------------------------";
+	echo "Abrir carpeta";        
+	echo "---------------------------";
+	decidir "gio open $proyectoActual > /dev/null 2>&1";
 }
 
 
