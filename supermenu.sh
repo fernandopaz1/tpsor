@@ -204,7 +204,6 @@ g_funcion () {
 
 h_funcion () {
 	imprimir_encabezado "\tOpción h.  Correr ejercio 2b: Sincronización";
-	script sincronizacion.txt; 
 	decidir "cd $proyectoActual; gcc sincronizacion.c -o sincronizacion.e -lpthread; ./sincronizacion.e";
 }
 
