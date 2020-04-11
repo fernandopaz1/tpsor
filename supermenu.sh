@@ -66,8 +66,8 @@ necesitaPull(){
 	longDiff=${#gitLogOutput};    #guarda en longDiff la cantidad de 	caracteres de la salida de "gitLogOutput". 
 
 
-if (($longDiff > 1))  #en caso de que sea mayor a uno quiere decir que 
-	then	  	# hay diferencia entre los commits. 		
+if (($longDiff > 1))  #en caso de que sea mayor a uno quiere decir que hay diferencia entre los commits. 
+	then	  		 		
 	echo
 	echo "Debe realizar un pull antes de empezar a trabajar";
 	echo
@@ -96,7 +96,7 @@ imprimir_menu () {
     echo -e "\t\t\t c.  Actualizar repo";
     echo -e "\t\t\t d.  Abrir en terminal";        
     echo -e "\t\t\t e.  Abrir en carpeta"; 
-    echo -e "\t\t\t f.  Correr ejercio 1: Proceso y fork";
+    echo -e "\t\t\t f.  Correr ejercio 1: Proceso y fork";			#Agregamos mas opciones al supermenu incluyendo los otros ejercicios.
     echo -e "\t\t\t g.  Correr ejercio 2: Filósofos chinos";
     echo -e "\t\t\t h.  Correr ejercio 2b: Sincronización"; 
     
@@ -117,7 +117,7 @@ a_funcion () {
 
         echo "---------------------------"        
 	echo "Incoming changes (need a pull)?"
-	decidir "cd $proyectoActual; necesitaPull"
+	decidir "cd $proyectoActual; necesitaPull"			#llamamos a la funcion necesitaPull.
 
 }
 
@@ -127,16 +127,16 @@ b_funcion () {
        	echo "Ingrese mensaje para el commit:";
        	read mensaje;
        	decidir "cd $proyectoActual; git commit -m \"$mensaje\"";
-       	decidir "cd $proyectoActual; git push origin master";
+       	decidir "cd $proyectoActual; git push origin master";		#Le pasamos la direccion de nuestro gitlab
 }
 
 c_funcion () {
       	imprimir_encabezado "\tOpción c.  Actualizar repo";
-      	decidir "cd $proyectoActual; git pull upstream master";   	 
+      	decidir "cd $proyectoActual; git pull upstream master";   	 #Le pasamos la direccion de nuestro gitlab
 }
 
 d_funcion () {
-	imprimir_encabezado "\tOpción f.  Abrir en terminal"; 
+	imprimir_encabezado "\tOpción f.  Abrir en terminal"; 		#Aca tambien agregamos los demas ejercicios del tp para abrir por terminal
 
 	echo -e "\t\t";
 	echo -e "\t\t Opciones:";
@@ -166,24 +166,24 @@ d_funcion () {
 }
 
 e_funcion () {
-	imprimir_encabezado "\tOpción g.  Abrir en carpeta";
+	imprimir_encabezado "\tOpción g.  Abrir en carpeta";			#Lista los archivos que hay en la carpeta del proyecto
 	echo "---------------------------";
 	echo "Listar archivos de la carpeta?";
 	decidir "cd $proyectoActual; ls -a | grep .";
 	echo " ";
 	echo "---------------------------";
-	echo "Abrir carpeta";        
+	echo "Abrir carpeta";        											
 	echo "---------------------------";
-	decidir "gio open $proyectoActual > /dev/null 2>&1";
+	decidir "gio open $proyectoActual > /dev/null 2>&1";			#Abre la carpeta y descarta el output en el archivo dev/null 
 }
 
 
 f_funcion () {
-      	imprimir_encabezado "\tOpción d.  Correr ejercio 1: Proceso y fork";
+      	imprimir_encabezado "\tOpción d.  Correr ejercio 1: Proceso y fork";		#Ejecuta el programa Do_nothing con y sin fork.
 	rm do_nothingSinFork.txt > /dev/null 2>&1;
 	rm do_nothingFork.txt > /dev/null 2>&1;
-	echo "Correr version sin implementacion de fork:";
-	decidir "cd $proyectoActual; gcc do_nothingSinFork.c -o do_nothingSinFork.e; (time ./do_nothingSinFork.e >> do_nothingSinFork.txt)";
+	echo "Correr version sin implementacion de fork:";			
+	decidir "cd $proyectoActual; gcc do_nothingSinFork.c -o do_nothingSinFork.e; (time ./do_nothingSinFork.e >> do_nothingSinFork.txt)";		
 	echo "Desea ver de que forma se ejecutó:";
 	decidir "cd $proyectoActual; cat do_nothingSinFork.txt";
 
@@ -196,21 +196,16 @@ f_funcion () {
 }
 
 g_funcion () {
-      	imprimir_encabezado "\tOpción e.  Correr ejercio 2: Filósofos chinos";
+      	imprimir_encabezado "\tOpción e.  Correr ejercio 2: Filósofos chinos";						#Ejecuta el programa filofososChinos
 	decidir "cd $proyectoActual; gcc filosofosChinos.c -o filosofosChinos.e -lpthread; ./filosofosChinos.e";   	 
 }
 
 
 
 h_funcion () {
-	imprimir_encabezado "\tOpción h.  Correr ejercio 2b: Sincronización";
+	imprimir_encabezado "\tOpción h.  Correr ejercio 2b: Sincronización";						#Ejecuta el programa sincronizacion
 	decidir "cd $proyectoActual; gcc sincronizacion.c -o sincronizacion.e -lpthread; ./sincronizacion.e";
 }
-
-#------------------------------------------------------
-# TODO: Completar con el resto de ejercicios del TP, una funcion por cada item
-#------------------------------------------------------
-
 
 
 #------------------------------------------------------
