@@ -168,8 +168,8 @@ d_funcion () {
 e_funcion () {
 	imprimir_encabezado "\tOpción g.  Abrir en carpeta";
 	echo "---------------------------";
-	echo "Listar archivos .c de la carpeta";
-	decidir "cd $proyectoActual; ls -a | grep ".c$"";
+	echo "Listar archivos de la carpeta?";
+	decidir "cd $proyectoActual; ls -a | grep .";
 	echo " ";
 	echo "---------------------------";
 	echo "Abrir carpeta";        
