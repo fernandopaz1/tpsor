@@ -62,17 +62,17 @@ decidir () {
 
 necesitaPull(){
   git fetch upstream master > /dev/null 2>&1;
-	gitDiffOutput=$(git log master..upstream/master --oneline);  #guarda en la variable la salida
-	longDiff=${#gitDiffOutput};    #guarda en longDiff la longitud de la salida
+	gitLogOutput=$(git log master..upstream/master --oneline);  #comparamos el ultimo commit de mi master con el ultimo commit del upstream, y lo guardamos en la variable. 
+	longDiff=${#gitLogOutput};    #guarda en longDiff la cantidad de 	caracteres de la salida de "gitLogOutput". 
 
 
-	if (($longDiff > 1))  
-    		then
-		echo
-		echo "Debe realizar un pull antes de empezar a trabajar";
-		echo
-	else
-        	echo "Su proyecto  esta actualizado";
+if (($longDiff > 1))  #en caso de que sea mayor a uno quiere decir que 
+	then	  	# hay diferencia entre los commits. 		
+	echo
+	echo "Debe realizar un pull antes de empezar a trabajar";
+	echo
+else
+	echo "Su proyecto  esta actualizado";
 	fi
 }
 cd $proyectoActual;
