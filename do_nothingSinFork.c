@@ -20,10 +20,10 @@ void do_nothing_random(char* mensaje){
 
 int main() {
 	char* msg1= ""; 
-  char* msg2= "";
+  	char* msg2= "";
 	printf("\n pid del proceso=  %d \n",getpid());	
 
-	printf("\n %s","Llamada a do_nothing");
+	printf("\n %s","Llamada a do_nothing");				//Llamamos al programa do_nothing secuencialmente 4 veces.
 	do_nothing(2000000, msg1);
 
 	printf("\n %s","Llamada a do_nothing");

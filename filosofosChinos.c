@@ -139,14 +139,14 @@ int main(void)    {
 
 	*platos=a;
 	
-	sem_init(&A,0,1);
+	sem_init(&A,0,1);														//inicializamos todos los semaforos como disponibles
 	sem_init(&B,0,1);
 	sem_init(&C,0,1);
 	sem_init(&D,0,1);
 	sem_init(&E,0,1);
 
 
-	pthread_create(&thread_1, NULL, *filosofo1, platos);
+	pthread_create(&thread_1, NULL, *filosofo1, platos);				//Creamos los hilos y les pasamos el número de platos como parametro
 	pthread_create(&thread_2, NULL, *filosofo2, platos);
 	pthread_create(&thread_3, NULL, *filosofo3, platos);
 	pthread_create(&thread_4, NULL, *filosofo4, platos);
@@ -154,13 +154,13 @@ int main(void)    {
 
 
 
-	pthread_join(thread_1, NULL);
+	pthread_join(thread_1, NULL);										//Dormimos los hilos
 	pthread_join(thread_2, NULL);
 	pthread_join(thread_3, NULL);
 	pthread_join(thread_4, NULL);
 	pthread_join(thread_5, NULL);
 
-	sem_destroy(&A);
+	sem_destroy(&A);													//Destruimos los semaforos
 	sem_destroy(&B);
 	sem_destroy(&C);
 	sem_destroy(&D);
