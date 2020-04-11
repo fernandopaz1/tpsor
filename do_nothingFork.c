@@ -21,10 +21,10 @@ void do_nothing_random(char* mensaje){
 int main() {
 	char* msg1= "";				
 	char* msg2= "";
-	int pid= fork();			#Usamos la llamada al sistema fork y guardamos en pid su valor
+	int pid= fork();			//Usamos la llamada al sistema fork y guardamos en pid su valor
 	int pidC;
 	int status; 
-	if (pid!=0){					#proceso padre
+	if (pid!=0){					//proceso padre
 		printf("\n pid del padre=  %d \n",getpid());	
 
 		printf("\n %s","Padre llama do_nothing");
@@ -35,9 +35,9 @@ int main() {
 		do_nothing(2000000, msg1);
 		printf("\n %s","Padre llama do_nothing");
 
-		pidC = wait(&status);		#Usamos la llamada al sistema wait
+		pidC = wait(&status);		//Usamos la llamada al sistema wait
 	}
-	else{ 					#proceso hijo
+	else{ 					//proceso hijo
 		printf("\n pid del hijo=  %d \n",getpid());
 
 		printf("\n %s","Hijo llama do_nothing");

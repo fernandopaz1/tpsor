@@ -137,7 +137,7 @@ int main()    {
 	*iteraciones= a;
 
         pthread_t thread_1, thread_2, thread_3, thread_4,thread_5, thread_6,thread_7;
-	sem_init(&P1,	0,1);        
+	sem_init(&P1,	0,1);        															//Inicializamos los semaforos
 	sem_init(&P2,	0,0);
 	sem_init(&P3,	0,0);
 	sem_init(&P4,	0,0);
@@ -149,7 +149,7 @@ int main()    {
 	sem_init(&P7,	0,0);
 	
 
-        pthread_create(&thread_1, NULL, *pienso, iteraciones);
+        pthread_create(&thread_1, NULL, *pienso, iteraciones);						//Creamos los hilos
         pthread_create(&thread_2, NULL, *lavoPlatos, iteraciones);
         pthread_create(&thread_3, NULL, *limpioPisos, iteraciones);
 	pthread_create(&thread_4, NULL, *riegoPlantas, iteraciones);
@@ -159,7 +159,7 @@ int main()    {
 
 	
 
-        pthread_join(thread_1, NULL);
+        pthread_join(thread_1, NULL);													//Dormimos los hilos
         pthread_join(thread_2, NULL);
         pthread_join(thread_3, NULL);
 	pthread_join(thread_4, NULL);
@@ -167,7 +167,7 @@ int main()    {
 	pthread_join(thread_6, NULL);
 	pthread_join(thread_7, NULL);
         
-	sem_destroy(&P1);
+	sem_destroy(&P1);																//Destruimos los hilos
 	sem_destroy(&P2);
 	sem_destroy(&P3);
 	sem_destroy(&P4);
