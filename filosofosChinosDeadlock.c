@@ -2,6 +2,8 @@
 #include <semaphore.h>
 #include <stdio.h>
 #include <unistd.h> //para hacer sleep
+#include <sys/types.h>
+#include <signal.h>
 
 
 sem_t A;
@@ -112,8 +114,18 @@ static void * filosofo5() {
 	}
 }
 
+static void * mozo() { 
+	do_nothing(10000000, "Mozo: Vayan a comer a otro lado!");
+	sem_destroy(&A);
+	sem_destroy(&B);
+	sem_destroy(&C);
+	sem_destroy(&D);
+	sem_destroy(&E);
+	kill(getpid(), SIGKILL);
+}
+
 int main(void)    {
-        pthread_t thread_1, thread_2, thread_3, thread_4,thread_5;
+        pthread_t thread_1, thread_2, thread_3, thread_4,thread_5,thread_6;
         sem_init(&A,0,1);
         sem_init(&B,0,1);
 	sem_init(&C,0,1);
@@ -126,6 +138,7 @@ int main(void)    {
         pthread_create(&thread_3, NULL, *filosofo3, NULL);
 	pthread_create(&thread_4, NULL, *filosofo4, NULL);
 	pthread_create(&thread_5, NULL, *filosofo5, NULL);
+	pthread_create(&thread_6, NULL, *mozo, NULL);
 
 	
 
@@ -134,6 +147,7 @@ int main(void)    {
         pthread_join(thread_3, NULL);
 	pthread_join(thread_4, NULL);
 	pthread_join(thread_5, NULL);
+	pthread_join(thread_6, NULL);
         
 	sem_destroy(&A);
 	sem_destroy(&B);
@@ -143,7 +157,6 @@ int main(void)    {
 	
         pthread_exit(NULL);
 
-        printf("\n %s \n"," ");
     
         return 0;
 }
